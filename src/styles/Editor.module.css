@@ -1,0 +1,10 @@
+.editor {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: top;
+}
+.editor textarea {
+  margin: 1rem 0;
+}

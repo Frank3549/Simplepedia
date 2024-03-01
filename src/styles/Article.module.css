@@ -1,0 +1,10 @@
+/* Styles for the article */
+.article {
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 50rem;
+}
+
+.article-timestamp {
+  font-size: 75%;
+}
