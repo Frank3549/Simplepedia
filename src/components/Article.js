@@ -6,10 +6,29 @@
   props:
     currentArticle - The article to render
 */
+import PropTypes from 'prop-types';
 import styles from "../styles/Article.module.css";
 import ArticleShape from "./ArticleShape";
 
-export default function Article({ currentArticle }) {
-  return <p>Article</p>;
+function Article({ currentArticle }) {
+  // Turn string into a Date object
+  const date = new Date(currentArticle.edited);
+  return (
+    <div className={styles.article}>
+      <h2>{currentArticle.title}</h2>
+      <p>{currentArticle.contents}</p>
+      <p className={styles.timestamp}>{date.toLocaleString()}</p>
+    </div>
+  );
 }
+
+Article.propTypes = {
+  currentArticle: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    contents: PropTypes.string.isRequired,
+    edited: PropTypes.string.isRequired,
+  }).isRequired
+};
+
+export default Article;
 

@@ -8,8 +8,50 @@
     setCurrentArticle - a callback that expects an article as an argument
 
 */
+import PropTypes from 'prop-types';
 import ArticleShape from "./ArticleShape";
 
-export default function TitlesView({ articles, setCurrentArticle }) {
-  return <ul>Titles go here</ul>;
+function TitlesView({ articles, setCurrentArticle }) {
+  // articles is a array of object that contains title, content, edited, and id.
+  // sort the objects in the array by title.
+  let sortedArticles = [...articles].sort((a, b) => {
+    const titleA = a.title.toLowerCase();
+    const titleB = b.title.toLowerCase();
+
+    if (titleA < titleB) {
+      return -1;
+    }
+    if (titleA > titleB) {
+      return 1;
+    }
+    return 0;
+  });
+
+  // Since react needs a unique key and id is unique we'll set it as that
+  // Put each title inside a <li> with onClick that updates indexBars setCurrentArticle function.
+  sortedArticles = sortedArticles.map((singularArticle) => (
+    <li
+      data-testid="title"
+      onClick={() => setCurrentArticle(singularArticle)}
+      key={singularArticle.id}
+    >
+      {singularArticle.title}
+    </li>
+  ));
+
+  return (
+    <div>
+      <ul>{sortedArticles}</ul>
+    </div>
+  );
 }
+
+TitlesView.propTypes = {
+  articles: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+  })).isRequired,
+  setCurrentArticle: PropTypes.func.isRequired,
+};
+
+export default TitlesView;
+
