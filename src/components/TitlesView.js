@@ -8,7 +8,7 @@
     setCurrentArticle - a callback that expects an article as an argument
 
 */
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import ArticleShape from "./ArticleShape";
 
 function TitlesView({ articles, setCurrentArticle }) {
@@ -47,11 +47,8 @@ function TitlesView({ articles, setCurrentArticle }) {
 }
 
 TitlesView.propTypes = {
-  articles: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-  })).isRequired,
+  articles: PropTypes.shape(ArticleShape).isRequired,
   setCurrentArticle: PropTypes.func.isRequired,
 };
 
 export default TitlesView;
-

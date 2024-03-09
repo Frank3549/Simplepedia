@@ -6,7 +6,7 @@
   props:
     currentArticle - The article to render
 */
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import styles from "../styles/Article.module.css";
 import ArticleShape from "./ArticleShape";
 
@@ -23,12 +23,7 @@ function Article({ currentArticle }) {
 }
 
 Article.propTypes = {
-  currentArticle: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    contents: PropTypes.string.isRequired,
-    edited: PropTypes.string.isRequired,
-  }).isRequired
+  currentArticle: PropTypes.arrayOf.shape(ArticleShape).isRequired,
 };
 
 export default Article;
-
