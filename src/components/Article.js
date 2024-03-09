@@ -23,7 +23,7 @@ function Article({ currentArticle }) {
 }
 
 Article.propTypes = {
-  currentArticle: PropTypes.arrayOf.shape(ArticleShape).isRequired,
+  currentArticle: PropTypes.arrayOf(ArticleShape).isRequired,
 };
 
 export default Article;
