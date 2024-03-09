@@ -15,58 +15,70 @@
     currentArticle - object with `title` and `contents` properties at minimum
     complete - function to call on completion (required)
 */
-import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useState } from "react";
+import PropTypes from "prop-types";
 import ArticleShape from "./ArticleShape";
 import styles from "../styles/Editor.module.css";
 
 function Editor({ currentArticle, complete }) {
+  const [newTitle, setTitle] = useState(
+    currentArticle ? currentArticle.title : "",
+  );
+  const [newContent, setContent] = useState(
+    currentArticle ? currentArticle.contents : "",
+  );
 
-  const article = currentArticle || {title : "", content: "", date: ""};
-  const [title, setTitle] = useState(currentArticle ? currentArticle.title : ""); 
-  const [content, setContent] = useState(currentArticle ? currentArticle.content : "") ;
-  
   return (
-  <>
-  <input 
-  type="text" 
-  id="title"
-  placeholder="Title must be set"
-  value={title}
-  onChange={titleInput => setTitle(titleInput.target.value)}
-  />
+    <div class={styles.editor}>
+      <input
+        type="text"
+        id="title"
+        placeholder="Title must be set"
+        value={newTitle}
+        onChange={(titleInput) => {
+          setTitle(titleInput.target.value);
+        }}
+      />
 
-  <textarea 
-  id="articleContent" 
-  placeholder="Contents" 
-  value={content}
-  onChange={newContent => setContent(newContent.target.value)}
-  />
+      <textarea
+        id="articleContent"
+        placeholder="Contents"
+        value={newContent}
+        onChange={(changingContent) => setContent(changingContent.target.value)}
+        class={styles.textarea}
+      />
 
-  <button 
-  type="button" 
-  disabled={!title.trim()} 
-  onClick={() => {
-    // Update and save
-    article.title = title;
-    article.content = content;
-    const currentDate = new Date();
-    article.date = currentDate.toISOString();
-    complete(article);
-    window.location.href = `http://localhost:3000/articles`;
-    }}>Save</button>
+      <button
+        type="button"
+        disabled={!newTitle.trim()}
+        onClick={() => {
+          const currentDate = new Date().toISOString();
+          const oldID = currentArticle ? currentArticle.id : "";
+          const newArticle = {
+            title: newTitle,
+            contents: newContent,
+            edited: currentDate,
+            id: oldID,
+          };
+          complete(newArticle);
+        }}
+      >
+        Save
+      </button>
 
-  {/* button type has been specified. Unsure why the eslint error */}
-  {/* eslint-disable-next-line */}
-  <button 
-  type="button" 
-  onClick={() => {
-    setTitle("")
-    setContent("")
-    complete()
-    }}>Cancel</button>
-  </>
-  
+      {/* button type has been specified. Unsure why the eslint error */}
+      {/* eslint-disable-next-line */}
+      <button
+        type="button"
+        onClick={() => {
+          setTitle("");
+          setContent("");
+          complete();
+        }}
+      >
+        Cancel
+      </button>
+    </div>
   );
 }
 
@@ -76,4 +88,3 @@ Editor.propTypes = {
 };
 
 export default Editor;
-

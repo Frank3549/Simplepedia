@@ -9,14 +9,18 @@
     setCurrentArticle - Function to call set current article displayed
     currentArticle - The article to render
 */
-import PropTypes from 'prop-types';
-import { useState } from "react";
+
+import PropTypes from "prop-types";
+import { useState, useEffect } from "react";
 import SectionsView from "./SectionsView";
 import TitlesView from "./TitlesView";
 import ArticleShape from "./ArticleShape";
 
-
-export default function IndexBar({ collection, setCurrentArticle, currentArticle}) {
+export default function IndexBar({
+  collection,
+  setCurrentArticle,
+  currentArticle,
+}) {
   // Pass to TitlesView (child) which will update IndexBar.
   const [currentSection, setCurrentSection] = useState(null);
 
@@ -36,6 +40,12 @@ export default function IndexBar({ collection, setCurrentArticle, currentArticle
     });
     sections = Array.from(hashSet);
   }
+
+  useEffect(() => {
+    if (currentArticle) {
+      setCurrentSection(currentArticle.title[0].toUpperCase());
+    }
+  }, [currentArticle]);
 
   /*
    Generate the SectionView and the TitlesView only if currentSection != null/undefine
@@ -59,11 +69,12 @@ export default function IndexBar({ collection, setCurrentArticle, currentArticle
 }
 
 IndexBar.propTypes = {
-  collection: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-  })).isRequired,
+  collection: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 
   setCurrentArticle: PropTypes.func.isRequired,
-  currentArticle: PropTypes.shape(ArticleShape)
-
-  };
+  currentArticle: PropTypes.shape(ArticleShape),
+};
