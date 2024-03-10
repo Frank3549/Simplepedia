@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-// import { handleClientScriptLoad } from "next/script";
 import PropTypes from "prop-types";
 import IndexBar from "../../components/IndexBar";
 import ArticleShape from "../../components/ArticleShape";
@@ -14,13 +13,14 @@ export default function Simplepedia({
   const router = useRouter();
   const handleClick = (string) => {
     if (string === "add") {
-      router.push("http://localhost:3000/edit");
+      router.push("/edit");
     } else if (string === "edit") {
-      router.push(`http://localhost:3000/articles/${currentArticle.id}/edit`);
+      router.push(`/articles/${currentArticle.id}/edit`);
     }
   };
 
   const articleValid = !!currentArticle;
+
   return (
     <>
       <IndexBar
@@ -28,7 +28,7 @@ export default function Simplepedia({
         setCurrentArticle={setCurrentArticle}
         currentArticle={currentArticle}
       />
-      {currentArticle ? <Article currentArticle={currentArticle} /> : <div />}
+      {currentArticle && <Article currentArticle={currentArticle} />}
       <ButtonBar handleClick={handleClick} allowEdit={articleValid} />
     </>
   );

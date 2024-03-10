@@ -55,6 +55,7 @@ export default function IndexBar({
    Generate the SectionView and the TitlesView only if currentSection != null/undefine
    Otherwise prompt a selection.
   */
+
   return (
     <div>
       <SectionsView sections={sections} setCurrentSection={newSectionSelect} />

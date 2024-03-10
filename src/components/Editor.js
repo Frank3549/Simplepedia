@@ -29,7 +29,7 @@ function Editor({ currentArticle, complete }) {
   );
 
   return (
-    <div class={styles.editor}>
+    <div className={styles.editor}>
       <input
         type="text"
         id="title"
@@ -45,7 +45,7 @@ function Editor({ currentArticle, complete }) {
         placeholder="Contents"
         value={newContent}
         onChange={(changingContent) => setContent(changingContent.target.value)}
-        class={styles.textarea}
+        className={styles.textarea}
       />
 
       <button
@@ -71,8 +71,6 @@ function Editor({ currentArticle, complete }) {
       <button
         type="button"
         onClick={() => {
-          setTitle("");
-          setContent("");
           complete();
         }}
       >

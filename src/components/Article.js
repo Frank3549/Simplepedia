@@ -11,7 +11,6 @@ import styles from "../styles/Article.module.css";
 import ArticleShape from "./ArticleShape";
 
 function Article({ currentArticle }) {
-  // Turn string into a Date object
   const date = new Date(currentArticle.edited);
   return (
     <div className={styles.article}>
@@ -23,10 +22,7 @@ function Article({ currentArticle }) {
 }
 
 Article.propTypes = {
-  currentArticle: PropTypes.oneOfType([
-    PropTypes.arrayOf(ArticleShape),
-    PropTypes.shape({}),
-  ]),
+  currentArticle: PropTypes.shape(ArticleShape).isRequired,
 };
 
 export default Article;

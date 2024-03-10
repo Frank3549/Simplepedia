@@ -10,16 +10,13 @@ export default function SimplepediaEditor({
   currentArticle,
 }) {
   const router = useRouter();
-  const complete = (article) => {
-    if (article && article.id) {
-      const indexOfOldArticle = collection.findIndex(
-        (oldArticle) => +oldArticle.id === +article.id,
+  const complete = (newArticle) => {
+    if (newArticle && newArticle.id) {
+      const updatedCollections = collection.map((oldArticle) =>
+        +oldArticle.id === +newArticle.id ? newArticle : oldArticle,
       );
-      const updatedCollections = [...collection];
-      updatedCollections[indexOfOldArticle] = article;
       setCollection(updatedCollections);
-      setCurrentArticle(article);
-      router.push(`http://localhost:3000/articles/${article.id}`);
+      setCurrentArticle(newArticle);
     } else {
       router.back();
     }

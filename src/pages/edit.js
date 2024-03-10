@@ -11,18 +11,16 @@ export default function SimplepediaCreator({
   const router = useRouter();
   const complete = (article) => {
     if (article) {
-      const updatedCollections = [...collection];
-      const maxId = updatedCollections.reduce(
+      const maxId = collection.reduce(
         (max, obj) => Math.max(max, obj.id),
         -Infinity,
       );
       // Intentional Disable to update article.id to a unique number
       // eslint-disable-next-line no-param-reassign
       article.id = maxId + 1;
-      updatedCollections.push(article);
+      const updatedCollections = [...collection, article];
       setCollection(updatedCollections);
       setCurrentArticle(article);
-      router.push(`http://localhost:3000/articles/${article.id}`);
     } else {
       router.back();
     }
