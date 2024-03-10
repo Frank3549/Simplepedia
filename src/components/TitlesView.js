@@ -47,7 +47,7 @@ function TitlesView({ articles, setCurrentArticle }) {
 }
 
 TitlesView.propTypes = {
-  articles: PropTypes.shape(ArticleShape).isRequired,
+  articles: PropTypes.arrayOf(ArticleShape).isRequired,
   setCurrentArticle: PropTypes.func.isRequired,
 };
 

@@ -20,8 +20,7 @@ export default function Simplepedia({
     }
   };
 
-  const allowEdit = currentArticle || false;
-
+  const articleValid = !!currentArticle;
   return (
     <>
       <IndexBar
@@ -30,7 +29,7 @@ export default function Simplepedia({
         currentArticle={currentArticle}
       />
       {currentArticle ? <Article currentArticle={currentArticle} /> : <div />}
-      <ButtonBar handleClick={handleClick} allowEdit={allowEdit} />
+      <ButtonBar handleClick={handleClick} allowEdit={articleValid} />
     </>
   );
 }
@@ -39,8 +38,7 @@ Simplepedia.propTypes = {
   collection: PropTypes.arrayOf(ArticleShape).isRequired,
   setCurrentArticle: PropTypes.func.isRequired,
   currentArticle: PropTypes.oneOfType([
-    PropTypes.shape(ArticleShape).isRequired,
-    // eslint-disable-next-line
-    PropTypes.undefined, //currentArticle can be undefined.
+    PropTypes.shape(ArticleShape),
+    PropTypes.shape({}),
   ]),
 };

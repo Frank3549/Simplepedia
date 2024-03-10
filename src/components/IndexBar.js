@@ -47,6 +47,10 @@ export default function IndexBar({
     }
   }, [currentArticle]);
 
+  const articlesToDisplay = collection.filter(
+    (article) => article.title[0].toUpperCase() === currentSection,
+  );
+
   /*
    Generate the SectionView and the TitlesView only if currentSection != null/undefine
    Otherwise prompt a selection.
@@ -56,9 +60,7 @@ export default function IndexBar({
       <SectionsView sections={sections} setCurrentSection={newSectionSelect} />
       {currentSection ? (
         <TitlesView
-          articles={collection.filter(
-            (article) => article.title[0].toUpperCase() === currentSection,
-          )} // only display relevant articles
+          articles={articlesToDisplay} // only display relevant articles
           setCurrentArticle={setCurrentArticle}
         />
       ) : (
@@ -69,12 +71,10 @@ export default function IndexBar({
 }
 
 IndexBar.propTypes = {
-  collection: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-
+  collection: PropTypes.arrayOf(ArticleShape).isRequired,
   setCurrentArticle: PropTypes.func.isRequired,
-  currentArticle: PropTypes.shape(ArticleShape),
+  currentArticle: PropTypes.oneOfType([
+    PropTypes.shape(ArticleShape),
+    PropTypes.shape({}),
+  ]),
 };
