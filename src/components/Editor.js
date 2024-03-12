@@ -81,10 +81,7 @@ function Editor({ currentArticle, complete }) {
 }
 
 Editor.propTypes = {
-  currentArticle: PropTypes.oneOfType([
-    PropTypes.shape(ArticleShape),
-    PropTypes.shape({}),
-  ]),
+  currentArticle: PropTypes.oneOfType([ArticleShape, PropTypes.shape({})]),
   complete: PropTypes.func.isRequired,
 };
 

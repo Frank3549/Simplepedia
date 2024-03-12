@@ -35,9 +35,6 @@ export default function SimplepediaEditor({
 SimplepediaEditor.propTypes = {
   collection: PropTypes.arrayOf(ArticleShape).isRequired,
   setCollection: PropTypes.func.isRequired,
-  currentArticle: PropTypes.oneOfType([
-    PropTypes.shape(ArticleShape),
-    PropTypes.shape({}),
-  ]),
+  currentArticle: PropTypes.oneOfType([ArticleShape, PropTypes.shape({})]),
   setCurrentArticle: PropTypes.func.isRequired,
 };
