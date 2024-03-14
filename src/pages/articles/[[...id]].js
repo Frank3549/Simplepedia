@@ -37,5 +37,5 @@ export default function Simplepedia({
 Simplepedia.propTypes = {
   collection: PropTypes.arrayOf(ArticleShape).isRequired,
   setCurrentArticle: PropTypes.func.isRequired,
-  currentArticle: PropTypes.oneOfType([ArticleShape, PropTypes.shape({})]),
+  currentArticle: ArticleShape,
 };
