@@ -12,11 +12,11 @@ function MainApp({ Component, pageProps }) {
   const router = useRouter();
   const { id } = router.query;
 
-  let currentArticle = id
+  const currentArticle = id
     ? collection.find((article) => +article.id === +id)
     : undefined;
 
-  let setCurrentArticle = (article) => {
+  const setCurrentArticle = (article) => {
     if (article) {
       router.push(`/articles/${article.id}`);
     } else {

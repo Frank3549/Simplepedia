@@ -11,9 +11,9 @@ export default function SimplepediaEditor({
 }) {
   const router = useRouter();
   const complete = (newArticle) => {
-    if (newArticle && newArticle.id) {
+    if (newArticle) {
       const updatedCollections = collection.map((oldArticle) =>
-        +oldArticle.id === +newArticle.id ? newArticle : oldArticle,
+        oldArticle.id === newArticle.id ? newArticle : oldArticle,
       );
       setCollection(updatedCollections);
       setCurrentArticle(newArticle);
@@ -35,6 +35,6 @@ export default function SimplepediaEditor({
 SimplepediaEditor.propTypes = {
   collection: PropTypes.arrayOf(ArticleShape).isRequired,
   setCollection: PropTypes.func.isRequired,
-  currentArticle: PropTypes.oneOfType([ArticleShape, PropTypes.shape({})]),
+  currentArticle: ArticleShape.isRequired,
   setCurrentArticle: PropTypes.func.isRequired,
 };

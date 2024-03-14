@@ -74,5 +74,5 @@ export default function IndexBar({
 IndexBar.propTypes = {
   collection: PropTypes.arrayOf(ArticleShape).isRequired,
   setCurrentArticle: PropTypes.func.isRequired,
-  currentArticle: PropTypes.oneOfType([ArticleShape, PropTypes.shape({})]),
+  currentArticle: ArticleShape,
 };
