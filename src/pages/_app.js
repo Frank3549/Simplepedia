@@ -44,7 +44,14 @@ function MainApp({ Component, pageProps }) {
         <Component {...props} />
       </main>
 
-      <footer>Simplepedia</footer>
+      <footer>
+        <a
+          className={styles.githubLink}
+          href="https://github.com/Frank3549/Simplepedia.git"
+        >
+          Github Repository
+        </a>
+      </footer>
     </div>
   );
 }
