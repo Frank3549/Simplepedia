@@ -27,8 +27,6 @@ function TitlesView({ articles, setCurrentArticle }) {
     return 0;
   });
 
-  // Since react needs a unique key and id is unique we'll set it as that
-  // Put each title inside a <li> with onClick that updates indexBars setCurrentArticle function.
   sortedArticles = sortedArticles.map((singularArticle) => (
     <li
       data-testid="title"

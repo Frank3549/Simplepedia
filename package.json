@@ -1,13 +1,8 @@
 {
-  "name": "assignment03",
+  "name": "Simplepedia",
   "version": "0.1.0",
   "private": true,
-  "author": "Your name <email@middlebury.edu>",
-  "contributors": [
-    "Christopher Andrews <candrews@middlebury.edu>",
-    "Michael Linderman <mlinderman@middlebury.edu>",
-    "David Chia"
-  ],
+  "author": "Frank Bautista <Fbautista90270@gmail.com>",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -15,8 +10,7 @@
     "start": "next start",
     "test": "jest",
     "lint": "eslint src",
-    "prepare": "husky",
-    "gradescope": "zip -r gradescope.zip setup.sh run_autograder assessment"
+    "prepare": "husky"
   },
   "dependencies": {
     "next": "13.5.6",

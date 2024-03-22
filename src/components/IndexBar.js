@@ -27,7 +27,9 @@ export default function IndexBar({
   // Update the section and clear the current article.
   const newSectionSelect = (section) => {
     setCurrentSection(section);
-    setCurrentArticle();
+    if (section !== currentSection) {
+      setCurrentArticle();
+    }
   };
 
   const hashSet = new Set();

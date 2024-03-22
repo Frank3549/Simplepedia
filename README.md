@@ -1,2 +1,1 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/YPIKBG8m)
-# Assignment 3
+Project dedicated to teaching me how to use react library to create a Wikipedia "like" website that allows users to insert and edit information.

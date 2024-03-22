@@ -44,7 +44,7 @@ function MainApp({ Component, pageProps }) {
         <Component {...props} />
       </main>
 
-      <footer>CS 312 Assignment 3</footer>
+      <footer>Simplepedia</footer>
     </div>
   );
 }

@@ -53,12 +53,12 @@ function Editor({ currentArticle, complete }) {
         disabled={!newTitle.trim()}
         onClick={() => {
           const currentDate = new Date().toISOString();
-          const oldID = currentArticle ? currentArticle.id : "";
-          const newArticle = { ...currentArticle };
-          newArticle.title = newTitle;
-          newArticle.contents = newContent;
-          newArticle.id = oldID;
-          newArticle.edited = currentDate;
+          const newArticle = {
+            ...currentArticle,
+            title: newTitle,
+            contents: newContent,
+            edited: currentDate,
+          };
           complete(newArticle);
         }}
       >
@@ -79,7 +79,6 @@ function Editor({ currentArticle, complete }) {
   );
 }
 
-// Using currentArticle can be undefined. PropTypes.shapes({}) is there to
 Editor.propTypes = {
   currentArticle: ArticleShape,
   complete: PropTypes.func.isRequired,
