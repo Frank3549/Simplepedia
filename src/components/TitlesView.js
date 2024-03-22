@@ -12,20 +12,9 @@ import PropTypes from "prop-types";
 import ArticleShape from "./ArticleShape";
 
 function TitlesView({ articles, setCurrentArticle }) {
-  // articles is a array of object that contains title, content, edited, and id.
-  // sort the objects in the array by title.
-  let sortedArticles = [...articles].sort((a, b) => {
-    const titleA = a.title.toLowerCase();
-    const titleB = b.title.toLowerCase();
-
-    if (titleA < titleB) {
-      return -1;
-    }
-    if (titleA > titleB) {
-      return 1;
-    }
-    return 0;
-  });
+  let sortedArticles = [...articles].sort((a, b) =>
+    a.title.localeCompare(b.title),
+  );
 
   sortedArticles = sortedArticles.map((singularArticle) => (
     <li

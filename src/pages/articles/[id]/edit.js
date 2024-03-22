@@ -27,7 +27,7 @@ export default function SimplepediaEditor({
       setCurrentArticle={setCurrentArticle}
       complete={complete}
       currentArticle={currentArticle}
-      key={currentArticle.id}
+      key={currentArticle?.id}
     />
   );
 }

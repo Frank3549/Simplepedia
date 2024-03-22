@@ -81,8 +81,6 @@ describe("IndexBar: Basic IndexBar functionality", () => {
   });
 });
 
-/* *********** Assignment three tests ********************** */
-
 describe("IndexBar: IndexBar with currentArticle", () => {
   let selectFunction;
 
